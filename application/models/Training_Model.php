@@ -7,6 +7,7 @@ class Training_Model extends CI_Model
 {
 	public function getAllData()
 	{
+		$this->db->order_by("id_training", "asc");
 		return $this->db->get('tbl_training')->result();
 	}
 
@@ -17,6 +18,7 @@ class Training_Model extends CI_Model
 		} else {
 			$this->db->limit($take, $skip);
 		}
+		$this->db->order_by("id_training", "asc");
 		return $this->db->get('tbl_training')->result();
 	}
 

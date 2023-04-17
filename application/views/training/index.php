@@ -1,5 +1,32 @@
 Content Wrapper. Contains page content -->
 <div class="content-wrapper">
+  <?php if(count($training) > 0) { ?>
+  <?php foreach ($training as $row){ ?>
+  <div class="modal fade" id="deleteModal<?php echo $row->id_training; ?>" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger">
+          <h5 class="modal-title" id="deleteModalLabel">Konfirmasi Penghapusan Data</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Apakah anda yakin akan <b>menghapus <?php echo $row->nama; ?></b> ?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            <i class="fa fa-times" aria-hidden="true"></i>&ensp;Tutup
+          </button>
+          <a type="button" class="btn btn-danger" href="<?php base_url() ?>DataTraining/hapus/<?php echo $row->id_training; ?>">
+            <i class="fa fa-trash" aria-hidden="true"></i>&ensp;Hapus
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php } ?>
+  <?php } ?>
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <div class="container-fluid">
@@ -209,7 +236,7 @@ Content Wrapper. Contains page content -->
                       <a href="<?= base_url() ?>DataTraining/ubah/<?= $row->id_training ?>" class="btn btn-primary">Update</a>
                     </td>
                     <td class="align-middle">
-                        <a href="<?= base_url() ?>DataTraining/hapus/<?= $row->id_training ?>" class="btn btn-danger" onclick="return confirm('yakin ?')">Hapus</a>
+                        <a href="#" data-toggle="modal" data-target="#deleteModal<?php echo $row->id_training;?>" class="btn btn-danger">Hapus</a>
                     </td>
                   </tr>
                   <?php 

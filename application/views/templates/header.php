@@ -9,6 +9,10 @@
 
   
   <!-- Font Awesome Icons -->
+  <!-- <link rel="stylesheet" href="<?= base_url() ?>assets/font-awesome-4.7.0/css/font-awesome.min.css"> -->
+
+  <link rel="stylesheet" href="<?= base_url() ?>assets/font-awesome-4.7.0/css/font-awesome.css">
+  
   <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -28,17 +32,51 @@
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
     <!-- Navbar -->
-    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Konfirmasi Proses Keluar</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Apakah anda yakin akan keluar?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+            <a type="button" class="btn btn-danger" href="<?= base_url() ?>Login/logout">Keluar</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="nav justify-content-between main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
         <li class="nav-item">
           <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
         </li>
+      </ul>
+      <ul class="navbar-nav">
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">DashBoard</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="#" class="nav-link">User</a>
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fa fa-user-circle" aria-hidden="true"></i>&ensp;<?php echo $username; ?>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+              <li class="dropdown-item btn btn-light" type="button">
+                <button class="btn btn-success w-100" type="button">
+                  <i class="fa fa-pencil-square" aria-hidden="true"></i>&ensp; Update Profile
+                </button>
+              </li>
+              <li class="dropdown-item btn btn-light">
+                <button class="btn btn-danger w-100" type="button" data-toggle="modal" data-target="#staticBackdrop">
+                  Keluar&ensp;<i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+                </button>
+              </li>
+            </ul>
+          </div>
         </li>
       </ul>
 

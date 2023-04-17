@@ -16,9 +16,14 @@ class DataUji extends CI_Controller
 
 	function index()
 	{
-
+		if(!$this->session->userdata('is_login')){
+			redirect('Login');
+        }
 		$data['training'] = $this->Training_Model->getAllData();
-		$this->load->view('templates/header');
+		$data['session_id'] = $this->session->userdata('session_id');
+		$data['nip'] = $this->session->userdata('nip');
+		$data['username'] = $this->session->userdata('username');
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 		$this->load->view('uji/index', $data);
 		$this->load->view('templates/footer');
@@ -26,6 +31,9 @@ class DataUji extends CI_Controller
 
 	public function hapus($id)
 	{
+		if(!$this->session->userdata('is_login')){
+			redirect('Login');
+        }
 		$this->Uji_Model->hapus_data($id);
 		$this->session->set_flashdata('flash_uji', 'Dihapus');
 		redirect('DataUji');
@@ -60,6 +68,9 @@ class DataUji extends CI_Controller
 	// }
 
 	function hitung(){
+		if(!$this->session->userdata('is_login')){
+			redirect('Login');
+        }
 		$output = "";
 		// $this->form_validation->set_rules("nama", "Nama", "required");
 		$this->form_validation->set_rules("pkh", "Pkh", "required");

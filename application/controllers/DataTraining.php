@@ -19,8 +19,10 @@ class DataTraining extends CI_Controller
 	
 	function index()
 	{
-// 		$url = parse_url($_SERVER['REQUEST_URI']);
-// parse_str($url['query'], $params); 
+		// session_start();
+		if(!$this->session->userdata('is_login')){
+			redirect('Login');
+        }
 		$params = $this->getQueryStringParams();
 		$skip = !empty($params['/NBV1/DataTraining?skip']) ? $params['/NBV1/DataTraining?skip'] : null;
 		$take = 50;
@@ -28,14 +30,20 @@ class DataTraining extends CI_Controller
 		$data['training'] = $this->Training_Model->getAllDataLimit($skip, $take);
 		$skip = !empty($params['/NBV1/DataTraining?skip']) ? $params['/NBV1/DataTraining?skip'] : '0';
 		$data['skip'] = (int)$skip;
+		$data['session_id'] = $this->session->userdata('session_id');
+		$data['nip'] = $this->session->userdata('nip');
+		$data['username'] = $this->session->userdata('username');
 		$data['countAll'] = $this->Training_Model->count_allData();
-		$this->load->view('templates/header');
+		$this->load->view('templates/header', $data);
 		$this->load->view('templates/sidebar');
 		$this->load->view('training/index', $data);
 		$this->load->view('templates/footer');
 	}
 
 	public function validation_form(){
+		if(!$this->session->userdata('is_login')){
+			redirect('Login');
+        }
 		// $this->form_validation->set_rules("id_training", "Id Training", "required|is_unique[tbl_training.id_training]|max_length[5]");
 		$this->form_validation->set_rules("nama", "Nama ", "required");
 		$this->form_validation->set_rules("pkh", "Pkh ", "required");
@@ -60,6 +68,9 @@ class DataTraining extends CI_Controller
 
 	public function hapus($id)
 	{
+		if(!$this->session->userdata('is_login')){
+			redirect('Login');
+        }
 		$this->Training_Model->hapus_data($id);
 		$this->session->set_flashdata('flash_training', 'Dihapus');
 		redirect('DataTraining');
@@ -67,6 +78,9 @@ class DataTraining extends CI_Controller
 
 	public function ubah($id)
 	{
+		if(!$this->session->userdata('is_login')){
+			redirect('Login');
+        }
 		// $this->form_validation->set_rules("id_training", "Id Training", "required|max_length[5]");
 		$this->form_validation->set_rules("nama", "Nama", "required");
 		$this->form_validation->set_rules("pkh", "Pkh", "required");
@@ -80,7 +94,10 @@ class DataTraining extends CI_Controller
 		if ($this->form_validation->run() == FALSE)
 		{
 			$data['ubah']= $this->Training_Model->detail_data($id);
-			$this->load->view('templates/header');
+			$data['nip'] = $this->session->userdata('nip');
+			$data['username'] = $this->session->userdata('username');
+			$data['session_id'] = $this->session->userdata('session_id');
+			$this->load->view('templates/header', $data);
 			$this->load->view('templates/sidebar');
 			$this->load->view('training/ubah', $data);
 			$this->load->view('templates/footer');
@@ -92,7 +109,5 @@ class DataTraining extends CI_Controller
 			redirect('DataTraining');
 		}	
 	}
-
-
 }
 ?>
