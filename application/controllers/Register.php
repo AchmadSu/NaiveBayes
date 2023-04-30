@@ -12,14 +12,31 @@ class Register extends CI_Controller {
 
 	public function index()
 	{
-        // var_dump($_SESSION['error']);exit();
+        if($this->session->userdata('is_login')){
+			redirect('DataTraining');
+        }
 		$this->load->view('view_register');
+	}
+
+	public function login()
+	{
+        if($this->session->userdata('is_login')){
+			redirect('DataTraining');
+        }
+        if(isset($_SESSION['error'])){
+            unset($_SESSION['error']);
+        }
+        redirect('login');
 	}
 
 	public function proses()
 	{
+        if($this->session->userdata('is_login')){
+			redirect('DataTraining');
+        }
 		$this->form_validation->set_rules('nip', 'nip','trim|required|min_length[1]|max_length[255]|is_unique[tb_user.nip]');
 		$this->form_validation->set_rules('password', 'password','trim|required|min_length[1]|max_length[255]');
+		$this->form_validation->set_rules('confirm_password', 'confirm_password','trim|required|required|matches[password]');
 		$this->form_validation->set_rules('username', 'username','trim|required|min_length[1]|max_length[255]');
 		if ($this->form_validation->run()==true)
 	   	{
@@ -35,7 +52,7 @@ class Register extends CI_Controller {
 		}
 		else
 		{
-			$this->session->set_flashdata('error', 'NIP sudah terdaftar, gunakan yang lain!');
+			$this->session->set_flashdata('error', validation_errors());
 			redirect('register');
 		}
 	}

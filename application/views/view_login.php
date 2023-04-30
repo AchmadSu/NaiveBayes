@@ -15,14 +15,18 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/toastr/toastr.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
+		<link rel="icon" type="image/png" href="<?= base_url() ?>assets/img/logo.png"/>
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	</head>
 	<body>
 	<div class="container my-5">
 		<div class="card">
-			<div class="card-header">
-				Form Login
+			<div class="d-flex my-2 justify-content-center">
+				<img src="<?php echo base_url(); ?>/assets/img/logo.png" class="w-25" alt="">
+			</div>
+			<div class="mt-5 text-center card-header">
+				<h4>Form Login Data BLT Desa Bojong - Nagreg</h4>
 			</div>
 			<div class="card-body">
 				<?php 
@@ -53,7 +57,7 @@
 					</div>
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Login</button>
-                        <a href="<?php echo base_url(); ?>register" type="submit" class="btn btn-success">Register</a>
+                        <a href="<?php echo base_url(); ?>login/register" type="submit" class="btn btn-success">Register</a>
                     </div>
 				</form>
 			</div>

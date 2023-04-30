@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>Naive Bayes</title>
+  <title>BLT Desa Bojong</title>
 
   
   <!-- Font Awesome Icons -->
@@ -28,6 +28,8 @@
   <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+  
+  <link rel="icon" type="image/png" href="<?= base_url() ?>assets/img/logo.png"/>
 </head>
 <body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
   <div class="wrapper">
@@ -66,9 +68,9 @@
             </button>
             <ul class="dropdown-menu dropdown-menu-right">
               <li class="dropdown-item btn btn-light" type="button">
-                <button class="btn btn-success w-100" type="button">
-                  <i class="fa fa-pencil-square" aria-hidden="true"></i>&ensp; Update Profile
-                </button>
+                <a href="<?= base_url() ?>updateProfile/clean" class="btn btn-success w-100" type="button">
+                  <i class="fa fa-pencil-square" aria-hidden="true"></i>&ensp;Update Profile
+                </a>
               </li>
               <li class="dropdown-item btn btn-light">
                 <button class="btn btn-danger w-100" type="button" data-toggle="modal" data-target="#staticBackdrop">

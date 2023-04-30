@@ -1,4 +1,4 @@
-Content Wrapper. Contains page content -->
+
 <div class="content-wrapper">
   <?php if(count($training) > 0) { ?>
   <?php foreach ($training as $row){ ?>
@@ -32,12 +32,12 @@ Content Wrapper. Contains page content -->
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Data Training</h1>
+          <h1>Data BLT Desa Bojong</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-            <li class="breadcrumb-item active">Data Training</li>
+            <li class="breadcrumb-item active">Data BLT Desa Bojong</li>
           </ol>
         </div>
       </div>
@@ -185,6 +185,18 @@ Content Wrapper. Contains page content -->
           <!-- card-body -->
           <div class="card-body">
             <?php if(count($training) > 0) { ?>
+            <div class="d-flex justify-content-end my-3">
+              <?php if (!($skip <= 0)) { ?>
+              <a href="<?php echo base_url()."DataTraining?skip=".$skip-50; ?>" class="btn btn-light mx-2">
+                  Prev
+              </a>
+              <?php } ?>
+              <?php if ($skip <= $countAll) { ?>
+              <a href="<?php echo base_url()."DataTraining?skip=".$skip+50; ?>" class="btn btn-success text-light">
+                  Next
+              </a>
+              <?php } ?>
+            </div>
             <table id="example1" class="table table-bordered table-responsive table-striped">
               <thead>
                 <tr>

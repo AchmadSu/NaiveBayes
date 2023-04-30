@@ -15,14 +15,18 @@
         <link rel="stylesheet" href="<?= base_url() ?>assets/plugins/toastr/toastr.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="<?= base_url() ?>assets/dist/css/adminlte.min.css">
+		<link rel="icon" type="image/png" href="<?= base_url() ?>assets/img/logo.png"/>
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 	</head>
 	<body>
 	<div class="container my-5">
 		<div class="card">
-			<div class="card-header">
-				Form Register
+			<div class="d-flex my-2 justify-content-center">
+				<img src="<?php echo base_url(); ?>/assets/img/logo.png" class="w-25" alt="">
+			</div>
+			<div class="mt-5 card-header text-center">
+				<h4>Form Register Data BLT Desa Bojong - Nagreg</h4>
 			</div>
 			<div class="card-body">
 				<?php 
@@ -46,9 +50,13 @@
 						<label for="password">Password</label>
 						<input type="password" class="form-control" name="password" id="password" placeholder="Password">
 					</div>
+					<div class="form-group">
+						<label for="password">Konfirmasi Password</label>
+						<input type="password" class="form-control" name="confirm_password" id="password" placeholder="Konfirmasi Password">
+					</div>
 					<div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-success">Daftar</button>
-                        <a href="<?php echo base_url(); ?>login" type="submit" class="btn btn-primary">Login</a>
+                        <a href="<?php echo base_url(); ?>register/login" type="submit" class="btn btn-primary">Login</a>
                     </div>
 				</form>
 			</div>

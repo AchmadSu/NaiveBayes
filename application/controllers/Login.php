@@ -18,6 +18,14 @@ class Login extends CI_Controller {
         }
 	}
 
+    public function register()
+	{
+        if(isset($_SESSION['error'])){
+            unset($_SESSION['error']);
+        }
+        redirect('register');
+	}
+
 	public function proses()
 	{
         if($this->session->userdata('is_login')){

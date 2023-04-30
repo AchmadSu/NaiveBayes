@@ -20,6 +20,9 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
+		if(!$this->session->userdata('is_login')){
+			redirect('Login');
+        }
 		$data['session_id'] = $this->session->userdata('session_id');
 		$data['nip'] = $this->session->userdata('nip');
 		$data['username'] = $this->session->userdata('username');
